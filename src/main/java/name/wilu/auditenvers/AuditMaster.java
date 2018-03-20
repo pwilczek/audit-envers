@@ -18,7 +18,7 @@ public class AuditMaster extends DefaultRevisionEntity {
         @Override public void newRevision(Object revisionEntity) {
             if (revisionEntity instanceof AuditMaster) {
                 AuditMaster am = (AuditMaster) revisionEntity;
-                am.operation = "todo";
+                am.operation = AuditContextProvider.get().operation();
             }
         }
     }
