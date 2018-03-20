@@ -8,12 +8,8 @@ import org.springframework.stereotype.Service;
 @Aspect @Service
 class AuditAspect {
     //
-    private final AuditContext ctx;
-    //
-    AuditAspect(AuditContext ctx) {this.ctx = ctx;}
-
     @Before(value = "@annotation(org.springframework.transaction.annotation.Transactional)")
     public void before(JoinPoint jp) {
-        ctx.operation("bingo");
+        AuditContextProvider.get().operation(jp.getSignature().toShortString());
     }
 }
