@@ -1,13 +1,14 @@
 package name.wilu.auditenvers;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.envers.Audited;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-@Entity
+@Audited @Entity
 public class User {
     //
     @Id public UUID id;
@@ -22,7 +23,7 @@ public class User {
         return this;
     }
 
-    @Entity
+    @Entity @Audited
     @Table(name = "book")
     public static class Book {
         //
